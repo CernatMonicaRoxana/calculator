@@ -1,5 +1,9 @@
 from lexer import generate_tokens
+from parse import Parser
 
-tokens = generate_tokens()
-print(list(tokens))
+tokens = list(generate_tokens())
+parser = Parser(tokens)
+tree = parser.parse()
+
+
 
