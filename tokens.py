@@ -4,10 +4,11 @@ from enum import Enum
 class TokenType(Enum):
     int_num = 0
     float_num = 1
+    Add = 2
 
 
 class Token:
-    def __init__(self, tip, value):
+    def __init__(self, tip, value=None):
         self.type = tip
         self.value = value
 

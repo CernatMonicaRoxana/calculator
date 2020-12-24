@@ -1,8 +1,5 @@
 from lexer import generate_tokens
 
+tokens = generate_tokens()
+print(list(tokens))
 
-while True:
-    lexer = generate_tokens()
-    tokens = list(lexer)
-
-    print(tokens)

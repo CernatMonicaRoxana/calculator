@@ -25,6 +25,11 @@ def generate_tokens():
             advance()
         elif current_char in digits or current_char == ".":
             yield generate_number()
+        elif current_char == "+":
+            advance()
+            yield Token(TokenType.Add)
+        else:
+            raise Exception("Illegal character {}".format(current_char))
 
 
 def generate_number():
@@ -50,4 +55,4 @@ def main():
     tokens = generate_tokens()
     print(list(tokens))
 
-main()
+# main()
