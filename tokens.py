@@ -8,6 +8,7 @@ class TokenType(Enum):
     Multiply = 3
     L_P = 4
     R_P = 5
+    Pow = 6
 
 
 class Token:

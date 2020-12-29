@@ -38,7 +38,10 @@ class Lexer:
                 yield Token(TokenType.L_P)
             elif self.current_char == ")":
                 self.advance()
-                yield  Token(TokenType.R_P)
+                yield Token(TokenType.R_P)
+            elif self.current_char == "^":
+                self.advance()
+                yield Token(TokenType.Pow)
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 

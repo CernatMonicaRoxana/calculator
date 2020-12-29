@@ -1,27 +1,30 @@
 from nodes import *
 from values import Number
-
+from math import pow
 
 class Interpreter:
     def visit(self, node):
-        name = f"visit_{type(node).__name__}"  # AddNode => visit_AddNode
+        name = f"{type(node).__name__}"  # AddNode => visit_AddNode
         method = getattr(self, name)
         return method(node)
 
-    def visit_NumberNode(self, node):
+    def NumberNode(self, node):
         return Number(node.value)
 
-    def visit_AddNode(self, node):
+    def AddNode(self, node):
         return Number(self.visit(node.node_a).value + self.visit(node.node_b).value)
 
-    def visit_SubtractNode(self, node):
+    def SubtractNode(self, node):
         return Number(self.visit(node.node_a).value - self.visit(node.node_b).value)
 
-    def visit_PlusNode(self, node):
+    def PlusNode(self, node):
         return self.visit(node.node)
 
-    def visit_MinusNode(self, node):
+    def MinusNode(self, node):
         return Number(-self.visit(node.node).value)
 
-    def visit_MultiplyNode(self, node):
+    def MultiplyNode(self, node):
         return Number(self.visit(node.node_a).value * self.visit(node.node_b).value)
+
+    def PowNode(self, node):
+        return Number(pow(self.visit(node.node_a).value, self.visit(node.node_b).value))

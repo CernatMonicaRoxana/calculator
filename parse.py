@@ -41,11 +41,13 @@ class Parser:
 
     def term(self):
         result = self.factor()
-        while self.current_token is not None and self.current_token.type == TokenType.Multiply:
+        while self.current_token is not None and self.current_token.type in (TokenType.Multiply, TokenType.Pow):
             if self.current_token.type == TokenType.Multiply:
                 self.advance()
                 result = MultiplyNode(result, self.factor())
-
+            elif self.current_token.type == TokenType.Pow:
+                self.advance()
+                result = PowNode(result, self.factor())
         return result
 
     def factor(self):
