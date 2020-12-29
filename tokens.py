@@ -2,9 +2,9 @@ from enum import Enum
 
 
 class TokenType(Enum):
-    int_num = 0
-    float_num = 1
-    Add = 2
+    Num = 0
+    Add = 1
+    Subtract = 2
 
 
 class Token:

@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Number:
-    value: float
+    value: any
 
     def __repr__(self):
         return "{}".format(self.value)

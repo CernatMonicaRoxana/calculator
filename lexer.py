@@ -27,6 +27,9 @@ class Lexer:
             elif self.current_char == "+":
                 self.advance()
                 yield Token(TokenType.Add)
+            elif self.current_char == "-":
+                self.advance()
+                yield Token(TokenType.Subtract)
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 
@@ -42,10 +45,15 @@ class Lexer:
             num += self.current_char
             self.advance()
 
+        if num.startswith("."):
+            num = "0" + num
+        if num.endswith("."):
+            num = num + "0"
+
         if dec_points == 0:
-            return Token(TokenType.int_num, int(num))
+            return Token(TokenType.Num, int(num))
         else:
-            return Token(TokenType.float_num, float(num))
+            return Token(TokenType.Num, float(num))
 
 #
 # def main():
