@@ -1,4 +1,4 @@
-from nodes import NumberNode, AddNode, SubtractNode
+from nodes import *
 from values import Number
 
 
@@ -18,4 +18,7 @@ class Interpreter:
         return Number(self.visit(node.node_a).value - self.visit(node.node_b).value)
 
     def visit_PlusNode(self, node):
-        return Number(self.visit(node.value))
+        return self.visit(node.value)
+
+    def visit_MinusNode(self, node):
+        return Number(-self.visit(node.node).value)

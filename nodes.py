@@ -29,7 +29,16 @@ class SubtractNode:
 
 @dataclass
 class PlusNode:
-    value: any
+    node: any
 
     def __repr__(self):
         return "(+ {})".format(self.value)
+
+
+@dataclass
+class MinusNode:
+    node: any
+
+    def __repr__(self):
+        return "(- {})".format(self.value)
+

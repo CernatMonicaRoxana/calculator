@@ -50,4 +50,8 @@ class Parser:
             self.advance()
             return PlusNode(self.factor())
 
+        elif token.type == TokenType.Subtract:
+            self.advance()
+            return MinusNode(self.factor())
+
         self.raise_error()
