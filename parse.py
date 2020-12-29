@@ -1,6 +1,7 @@
 from tokens import TokenType
 from nodes import *
 
+
 class Parser:
     def __init__(self, tokens):
         self.current_token = None
@@ -28,10 +29,12 @@ class Parser:
 
     def expr(self):
         result = self.factor()
-        while self.current_token is not None and self.current_token.type in (TokenType.Add):
+        while self.current_token is not None and self.current_token.type == TokenType.Add:
             if self.current_token.type == TokenType.Add:
                 self.advance()
                 result = AddNode(result, self.factor())
+
+        return result
 
     def factor(self):
         token = self.current_token

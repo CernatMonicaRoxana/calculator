@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class NumberNode:
-    value: any
+    value: float
 
     def __repr__(self):
         return "{}".format(self.value)
@@ -15,4 +15,4 @@ class AddNode:
     node_b: any
 
     def __repr__(self):
-        return "{} + {}".format(self.node_a, self.node_b)
+        return "({} + {})".format(self.node_a, self.node_b)

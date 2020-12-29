@@ -1,9 +1,12 @@
-from lexer import generate_tokens
+from lexer import Lexer
 from parse import Parser
+from interpreter import Interpreter
 
-tokens = list(generate_tokens())
-parser = Parser(tokens)
-tree = parser.parse()
+while True:
+    expr = input("Enter an expression: \n")
+    lexer = Lexer(expr)
+    tokens = lexer.generate_tokens()
+    parser = Parser(tokens)
+    tree = parser.parse()
 
-
-
+    print(tree)
