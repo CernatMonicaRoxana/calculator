@@ -32,7 +32,7 @@ class PlusNode:
     node: any
 
     def __repr__(self):
-        return "(+ {})".format(self.value)
+        return "(+ {})".format(self.node)
 
 
 @dataclass
@@ -40,7 +40,7 @@ class MinusNode:
     node: any
 
     def __repr__(self):
-        return "(- {})".format(self.value)
+        return "(- {})".format(self.node)
 
 
 @dataclass

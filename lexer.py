@@ -33,6 +33,12 @@ class Lexer:
             elif self.current_char == "*":
                 self.advance()
                 yield Token(TokenType.Multiply)
+            elif self.current_char == "(":
+                self.advance()
+                yield Token(TokenType.L_P)
+            elif self.current_char == ")":
+                self.advance()
+                yield  Token(TokenType.R_P)
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 

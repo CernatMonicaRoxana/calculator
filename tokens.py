@@ -6,6 +6,8 @@ class TokenType(Enum):
     Add = 1
     Subtract = 2
     Multiply = 3
+    L_P = 4
+    R_P = 5
 
 
 class Token:

@@ -18,7 +18,7 @@ class Interpreter:
         return Number(self.visit(node.node_a).value - self.visit(node.node_b).value)
 
     def visit_PlusNode(self, node):
-        return self.visit(node.value)
+        return self.visit(node.node)
 
     def visit_MinusNode(self, node):
         return Number(-self.visit(node.node).value)
