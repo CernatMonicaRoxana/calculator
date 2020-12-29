@@ -28,14 +28,23 @@ class Parser:
         return result
 
     def expr(self):
-        result = self.factor()
+        result = self.term()
         while self.current_token is not None and self.current_token.type in (TokenType.Add, TokenType.Subtract):
             if self.current_token.type == TokenType.Add:
                 self.advance()
-                result = AddNode(result, self.factor())
+                result = AddNode(result, self.term())
             elif self.current_token.type == TokenType.Subtract:
                 self.advance()
                 result = SubtractNode(result, self.factor())
+
+        return result
+
+    def term(self):
+        result = self.factor()
+        while self.current_token is not None and self.current_token.type == TokenType.Multiply:
+            if self.current_token.type == TokenType.Multiply:
+                self.advance()
+                result = MultiplyNode(result, self.factor())
 
         return result
 

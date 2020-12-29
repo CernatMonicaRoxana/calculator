@@ -30,6 +30,9 @@ class Lexer:
             elif self.current_char == "-":
                 self.advance()
                 yield Token(TokenType.Subtract)
+            elif self.current_char == "*":
+                self.advance()
+                yield Token(TokenType.Multiply)
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 

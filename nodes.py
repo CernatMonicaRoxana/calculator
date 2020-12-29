@@ -42,3 +42,11 @@ class MinusNode:
     def __repr__(self):
         return "(- {})".format(self.value)
 
+
+@dataclass
+class MultiplyNode:
+    node_a: any
+    node_b: any
+
+    def __repr__(self):
+        return "({} * {})".format(self.node_a, self.node_b)
