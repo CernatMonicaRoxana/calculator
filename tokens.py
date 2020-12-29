@@ -9,6 +9,7 @@ class TokenType(Enum):
     L_P = 4
     R_P = 5
     Pow = 6
+    Divide = 7
 
 
 class Token:

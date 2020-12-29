@@ -28,3 +28,9 @@ class Interpreter:
 
     def PowNode(self, node):
         return Number(self.visit(node.node_a).value ** self.visit(node.node_b).value)
+
+    def DivideNode(self, node):
+        try:
+            return Number(self.visit(node.node_a).value / self.visit(node.node_b).value)
+        except Exception as e:
+            raise Exception(e)

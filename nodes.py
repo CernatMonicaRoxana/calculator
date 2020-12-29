@@ -59,3 +59,12 @@ class PowNode:
 
     def __repr__(self):
         return "({} ^ {})".format(self.node_a, self.node_b)
+
+
+@dataclass
+class DivideNode:
+    node_a: any
+    node_b: any
+
+    def __repr__(self):
+        return "({} / {})".format(self.node_a, self.node_b)

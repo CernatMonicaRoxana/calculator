@@ -42,6 +42,9 @@ class Lexer:
             elif self.current_char == "^":
                 self.advance()
                 yield Token(TokenType.Pow)
+            elif self.current_char == "/":
+                self.advance()
+                yield Token(TokenType.Divide)
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 
