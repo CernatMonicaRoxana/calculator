@@ -25,3 +25,11 @@ class SubtractNode:
 
     def __repr__(self):
         return "({} - {})".format(self.node_a, self.node_b)
+
+
+@dataclass
+class PlusNode:
+    value: any
+
+    def __repr__(self):
+        return "(+ {})".format(self.value)

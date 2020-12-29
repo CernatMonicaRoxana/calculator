@@ -16,3 +16,6 @@ class Interpreter:
 
     def visit_SubtractNode(self, node):
         return Number(self.visit(node.node_a).value - self.visit(node.node_b).value)
+
+    def visit_PlusNode(self, node):
+        return Number(self.visit(node.value))

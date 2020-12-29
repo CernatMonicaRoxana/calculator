@@ -46,4 +46,8 @@ class Parser:
             self.advance()
             return NumberNode(token.value)
 
+        elif token.type == TokenType.Add:
+            self.advance()
+            return PlusNode(self.factor())
+
         self.raise_error()
