@@ -16,6 +16,7 @@ class TokenType(Enum):
     Sin = 11
     Cos = 12
     Ctg = 13
+    Tg = 14
 
 
 class Token:

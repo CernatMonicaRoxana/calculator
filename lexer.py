@@ -56,6 +56,8 @@ class Lexer:
                 yield self.generate_sin()
             elif self.current_char == "c":
                 yield self.generate_cos_ctg()
+            elif self.current_char == "t":
+                yield  self.generate_tg()
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 
@@ -170,3 +172,15 @@ class Lexer:
             return Token(TokenType.Cos)
         elif name == "ctg":
             return Token(TokenType.Ctg)
+
+    def generate_tg(self):
+        if self.current_char == "t":
+            self.advance()
+            if self.current_char == "g":
+                self.advance()
+            else:
+                self.invalid_char_err(self.current_char)
+        else:
+            self.invalid_char_err(self.current_char)
+
+        return Token(TokenType.Tg)

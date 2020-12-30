@@ -116,3 +116,12 @@ class CtgNode:
 
     def __repr__(self):
         return "(ctg({}))".format(self.node)
+
+
+@dataclass
+class TgNode:
+    node: any
+
+    def __repr__(self):
+        return "(tg({}))".format(self.node)
+
