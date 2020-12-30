@@ -52,6 +52,9 @@ class Lexer:
                 yield self.generate_rad()
             elif self.current_char == "l":
                 yield self.generate_log()
+            elif self.current_char == "s":
+                yield self.generate_sin()
+
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 
@@ -108,6 +111,8 @@ class Lexer:
                 if self.current_char == "g":
                     str += self.current_char
                     self.advance()
+                else:
+                    self.invalid_char_err(self.current_char)
             else:
                 self.invalid_char_err(self.current_char)
         else:
@@ -117,9 +122,19 @@ class Lexer:
             return Token(TokenType.Ln)
         elif str == "log":
             return Token(TokenType.Log)
-#
-# def main():
-#     tokens = generate_tokens()
-#     print(list(tokens))
-#
-# # main()
+
+    def generate_sin(self):
+        if self.current_char == "s":
+            self.advance()
+            if self.current_char == "i":
+                self.advance()
+                if self.current_char == "n":
+                    self.advance()
+                else:
+                    self.invalid_char_err(self.current_char)
+            else:
+                self.invalid_char_err(self.current_char)
+        else:
+            self.invalid_char_err(self.current_char)
+
+        return Token(TokenType.Sin)

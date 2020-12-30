@@ -75,7 +75,7 @@ class RadNode:
     node: any
 
     def __repr__(self):
-        return "(rad{})".format(self.node)
+        return "(rad({}))".format(self.node)
 
 
 @dataclass
@@ -83,12 +83,20 @@ class LnNode:
     node: any
 
     def __repr__(self):
-        return "(ln{})".format(self.node)
+        return "(ln({}))".format(self.node)
 
 
 @dataclass
-class LnNode:
+class LogNode:
     node: any
 
     def __repr__(self):
-        return "(log{})".format(self.node)
+        return "(log({}))".format(self.node)
+
+
+@dataclass
+class SinNode:
+    node: any
+
+    def __repr__(self):
+        return "(sin({}))".format(self.node)

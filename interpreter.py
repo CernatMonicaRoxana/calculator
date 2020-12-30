@@ -1,6 +1,6 @@
 from nodes import *
 from values import Number
-from math import sqrt, log
+from math import sqrt, log, sin
 
 
 class Interpreter:
@@ -44,3 +44,6 @@ class Interpreter:
 
     def LogNode(self, node):
         return Number(log(self.visit(node.node).value, 10))
+
+    def SinNode(self, node):
+        return Number(sin(self.visit(node.node).value))

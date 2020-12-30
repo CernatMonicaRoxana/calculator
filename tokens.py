@@ -13,6 +13,7 @@ class TokenType(Enum):
     Rad = 8
     Ln = 9
     Log = 10
+    Sin = 11
 
 
 class Token:
