@@ -3,7 +3,6 @@ from values import Number
 from math import sqrt, log, sin, cos
 
 
-
 class Interpreter:
     def visit(self, node):
         name = f"{type(node).__name__}"  # AddNode => visit_AddNode
