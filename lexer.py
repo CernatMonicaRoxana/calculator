@@ -18,6 +18,9 @@ class Lexer:
         else:
             self.current_char = None
 
+    def invalid_char_err(self, char):
+        raise Exception("Invalid character {}".format(char))
+
     def generate_tokens(self):
         while self.current_char is not None:
             if self.current_char in whitespaces:
@@ -45,6 +48,10 @@ class Lexer:
             elif self.current_char == "/":
                 self.advance()
                 yield Token(TokenType.Divide)
+            elif self.current_char == "r":
+                yield self.generate_rad()
+            elif self.current_char == "l":
+                yield self.generate_log()
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 
@@ -70,6 +77,46 @@ class Lexer:
         else:
             return Token(TokenType.Num, float(num))
 
+    def generate_rad(self):
+        if self.current_char == "r":
+            self.advance()
+            if self.current_char == "a":
+                self.advance()
+                if self.current_char == "d":
+                    self.advance()
+                else:
+                    self.invalid_char_err(self.current_char)
+
+            else:
+                self.invalid_char_err(self.current_char)
+        else:
+            self.invalid_char_err(self.current_char)
+
+        return Token(TokenType.Rad)
+
+    def generate_log(self):
+        str = ""
+        if self.current_char == "l":
+            str += self.current_char
+            self.advance()
+            if self.current_char == "n":
+                str += self.current_char
+                self.advance()
+            elif self.current_char == "o":
+                str += self.current_char
+                self.advance()
+                if self.current_char == "g":
+                    str += self.current_char
+                    self.advance()
+            else:
+                self.invalid_char_err(self.current_char)
+        else:
+            self.invalid_char_err(self.current_char)
+
+        if str == "ln":
+            return Token(TokenType.Ln)
+        elif str == "log":
+            return Token(TokenType.Log)
 #
 # def main():
 #     tokens = generate_tokens()

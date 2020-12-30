@@ -68,3 +68,27 @@ class DivideNode:
 
     def __repr__(self):
         return "({} / {})".format(self.node_a, self.node_b)
+
+
+@dataclass
+class RadNode:
+    node: any
+
+    def __repr__(self):
+        return "(rad{})".format(self.node)
+
+
+@dataclass
+class LnNode:
+    node: any
+
+    def __repr__(self):
+        return "(ln{})".format(self.node)
+
+
+@dataclass
+class LnNode:
+    node: any
+
+    def __repr__(self):
+        return "(log{})".format(self.node)

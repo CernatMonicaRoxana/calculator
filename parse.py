@@ -14,8 +14,8 @@ class Parser:
         except StopIteration:
             self.current_token = None
 
-    def raise_error(self):
-        raise Exception("Invalid syntax")
+    def raise_error(self, token):
+        raise Exception("Invalid syntax {}".format(token))
 
     def parse(self):
         if self.current_token is None:
@@ -23,7 +23,7 @@ class Parser:
         result = self.expr()
 
         if self.current_token is not None:
-            self.raise_error()
+            self.raise_error(self.current_token)
 
         return result
 
@@ -59,15 +59,80 @@ class Parser:
                 result = PowNode(result, self.factor())
         return result
 
+    # def rad(self):
+    #     result = self.factor()
+    #     while self.current_token is not None and self.current_token.type == TokenType.Rad:
+    #         if self.current_token.type == TokenType.Rad:
+    #
+    #             self.advance()
+    #
+    #             if self.current_token.type != TokenType.L_P:
+    #                 self.raise_error(self.current_token)
+    #
+    #             self.advance()
+    #
+    #             result = RadNode(self.expr())
+    #
+    #             self.advance()
+    #
+    #             if self.current_token.type != TokenType.R_P:
+    #                 self.raise_error(self.current_token)
+    #
+    #             self.advance()
+    #
+    #         return result
+
     def factor(self):
         token = self.current_token
+
+        if token.type == TokenType.Rad:
+            self.advance()
+            if self.current_token.type != TokenType.L_P:
+                self.raise_error(self.current_token)
+
+            self.advance()
+            result = RadNode(self.expr())
+
+            if self.current_token.type != TokenType.R_P:
+                self.raise_error(self.current_token)
+
+            self.advance()
+            return result
+
+        if token.type == TokenType.Ln:
+            self.advance()
+            if self.current_token.type != TokenType.L_P:
+                self.raise_error(self.current_token)
+
+            self.advance()
+            result = LnNode(self.expr())
+
+            if self.current_token.type != TokenType.R_P:
+                self.raise_error(self.current_token)
+
+            self.advance()
+            return result
+
+        if token.type == TokenType.Log:
+            self.advance()
+            if self.current_token.type != TokenType.L_P:
+                self.raise_error(self.current_token)
+
+            self.advance()
+            result = LogNode(self.expr())
+
+            if self.current_token.type != TokenType.R_P:
+                self.raise_error(self.current_token)
+
+            self.advance()
+            return result
 
         if token.type == TokenType.L_P:
             self.advance()
             result = self.expr()
 
             if self.current_token.type != TokenType.R_P:
-                self.raise_error()
+                self.raise_error(self.current_token)
 
             self.advance()
 
@@ -85,4 +150,5 @@ class Parser:
             self.advance()
             return MinusNode(self.factor())
 
-        self.raise_error()
+        self.raise_error(self.current_token)
+

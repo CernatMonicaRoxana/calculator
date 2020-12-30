@@ -1,6 +1,7 @@
 from nodes import *
 from values import Number
-from math import pow
+from math import sqrt, log
+
 
 class Interpreter:
     def visit(self, node):
@@ -34,3 +35,12 @@ class Interpreter:
             return Number(self.visit(node.node_a).value / self.visit(node.node_b).value)
         except Exception as e:
             raise Exception(e)
+
+    def RadNode(self, node):
+        return Number(sqrt(self.visit(node.node).value))
+
+    def LnNode(self, node):
+        return Number(log(self.visit(node.node).value))
+
+    def LogNode(self, node):
+        return Number(log(self.visit(node.node).value, 10))
