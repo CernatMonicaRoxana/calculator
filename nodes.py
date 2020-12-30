@@ -108,3 +108,11 @@ class CosNode:
 
     def __repr__(self):
         return "(cos({}))".format(self.node)
+
+
+@dataclass
+class CtgNode:
+    node: any
+
+    def __repr__(self):
+        return "(ctg({}))".format(self.node)
