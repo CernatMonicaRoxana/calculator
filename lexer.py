@@ -54,7 +54,8 @@ class Lexer:
                 yield self.generate_log()
             elif self.current_char == "s":
                 yield self.generate_sin()
-
+            elif self.current_char == "c":
+                yield self.generate_cos()
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 
@@ -98,18 +99,18 @@ class Lexer:
         return Token(TokenType.Rad)
 
     def generate_log(self):
-        str = ""
+        name = ""
         if self.current_char == "l":
-            str += self.current_char
+            name += self.current_char
             self.advance()
             if self.current_char == "n":
-                str += self.current_char
+                name += self.current_char
                 self.advance()
             elif self.current_char == "o":
-                str += self.current_char
+                name += self.current_char
                 self.advance()
                 if self.current_char == "g":
-                    str += self.current_char
+                    name += self.current_char
                     self.advance()
                 else:
                     self.invalid_char_err(self.current_char)
@@ -118,9 +119,9 @@ class Lexer:
         else:
             self.invalid_char_err(self.current_char)
 
-        if str == "ln":
+        if name == "ln":
             return Token(TokenType.Ln)
-        elif str == "log":
+        elif name == "log":
             return Token(TokenType.Log)
 
     def generate_sin(self):
@@ -138,3 +139,24 @@ class Lexer:
             self.invalid_char_err(self.current_char)
 
         return Token(TokenType.Sin)
+
+    def generate_cos(self):
+        name = ""
+        if self.current_char == "c":
+            name += self.current_char
+            self.advance()
+            if self.current_char == "o":
+                name += self.current_char
+                self.advance()
+                if self.current_char == "s":
+                    name += self.current_char
+                    self.advance()
+                else:
+                    self.invalid_char_err(self.current_char)
+            else:
+                self.invalid_char_err(self.current_char)
+        else:
+            self.invalid_char_err(self.current_char)
+
+        if name == "cos":
+            return Token(TokenType.Cos)

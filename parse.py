@@ -141,6 +141,19 @@ class Parser:
             self.advance()
             return result
 
+        if token.type == TokenType.Cos:
+            self.advance()
+            if self.current_token.type != TokenType.L_P:
+                self.raise_error(self.current_token)
+
+            self.advance()
+            result = CosNode(self.expr())
+
+            if self.current_token.type != TokenType.R_P:
+                self.raise_error(self.current_token)
+
+            self.advance()
+            return result
 
         if token.type == TokenType.L_P:
             self.advance()

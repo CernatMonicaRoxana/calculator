@@ -14,6 +14,7 @@ class TokenType(Enum):
     Ln = 9
     Log = 10
     Sin = 11
+    Cos = 12
 
 
 class Token:

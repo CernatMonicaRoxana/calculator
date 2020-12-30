@@ -100,3 +100,11 @@ class SinNode:
 
     def __repr__(self):
         return "(sin({}))".format(self.node)
+
+
+@dataclass
+class CosNode:
+    node: any
+
+    def __repr__(self):
+        return "(cos({}))".format(self.node)
