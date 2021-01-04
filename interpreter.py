@@ -56,4 +56,3 @@ class Interpreter:
 
     def TgNode(self, node):
         return Number(sin(self.visit(node.node).value) / cos(self.visit(node.node).value))
-
