@@ -59,29 +59,6 @@ class Parser:
                 result = PowNode(result, self.factor())
         return result
 
-    # def rad(self):
-    #     result = self.factor()
-    #     while self.current_token is not None and self.current_token.type == TokenType.Rad:
-    #         if self.current_token.type == TokenType.Rad:
-    #
-    #             self.advance()
-    #
-    #             if self.current_token.type != TokenType.L_P:
-    #                 self.raise_error(self.current_token)
-    #
-    #             self.advance()
-    #
-    #             result = RadNode(self.expr())
-    #
-    #             self.advance()
-    #
-    #             if self.current_token.type != TokenType.R_P:
-    #                 self.raise_error(self.current_token)
-    #
-    #             self.advance()
-    #
-    #         return result
-
     def factor(self):
         token = self.current_token
 

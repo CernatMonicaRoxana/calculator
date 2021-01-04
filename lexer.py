@@ -57,7 +57,7 @@ class Lexer:
             elif self.current_char == "c":
                 yield self.generate_cos_ctg()
             elif self.current_char == "t":
-                yield  self.generate_tg()
+                yield self.generate_tg()
             else:
                 raise Exception("Illegal character {}".format(self.current_char))
 
